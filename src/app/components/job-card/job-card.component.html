@@ -1,18 +1,22 @@
-<li class="py-3 sm:py-4">
-    <div class="flex items-center space-x-4">
-        <div class="flex-shrink-0">
-            <img class="w-12 h-12 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" alt="company image">
-        </div>
-        <div class="flex-1 min-w-0">
-            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                Company name
+<li>
+    <div class="flex items-center space-x-4 shadow-sm border rounded-md border-b-gray-200 p-5 my-10">
+        <div class="flex-1 min-w-0 my-5">
+            <h2 class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                {{job.name}}
+            </h2>
+            <p class="text-sm font-normal truncate">
+                <span>At <a class="hover:text-purple-600" [routerLink]="['/companies/', job.company.id]">{{job.company.name}}</a> - </span>
+                <span>{{locations}}</span>
             </p>
-            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                Role
+            <p class="text-sm font-normal truncate">Posted on
+                {{job.publication_date | date}}
             </p>
         </div>
-        <button class="border rounded-xl bg-purple-600 hover:opacity-75 text-white inline-flex items-center font-regular p-2">
-            <span>View</span>
+        <button 
+            class="border rounded-xl bg-purple-600 hover:opacity-75 text-white inline-flex items-center font-regular p-2"
+            (click)="openJob(job.id)"
+        >
+            <span>Learn more</span>
         </button>
     </div>
 </li>

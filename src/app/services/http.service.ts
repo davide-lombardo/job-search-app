@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JobListRoot } from '../interfaces/job-list';
+import { Company, Job, JobsPaged } from '../interfaces/the-muse-api';
 import { Observable } from 'rxjs';
 
 
@@ -11,18 +11,30 @@ import { Observable } from 'rxjs';
 export class HttpService {
 
   baseUrl = 'https://www.themuse.com/api/public/jobs';
-  topUrl = '?category=Software%20Engineer&page=1&location=Milan%2C%20Italy';
+  path = '?category=Software%20Engineering&location=Milan%2C%20Italy';
+  topUrl = '&page=1';
 
   constructor(private http: HttpClient) { }
 
-  getJobs(): Observable<JobListRoot[]>{
+  getJobsPaged(page: number): Observable<JobsPaged>{
     return this.http
-    .get<JobListRoot[]>(`${this.baseUrl}${this.topUrl}`)
+      .get<JobsPaged>(`${this.baseUrl}${this.path}&page=${page}`)
   }
 
-  getCompany(id: number): void{
-    this.http
-    .get<JobListRoot>(`${this.baseUrl}${id}`);
+  getJobsByLevel(level: string, page:number): any{ 
+    return this.http
+      .get<JobsPaged>(`${this.baseUrl}${this.path}&level=${level}&page=${page}`);
+  }
+
+  getJobDetails(id: number | undefined): Observable<Job>{
+    return this.http
+      .get<Job>(`${this.baseUrl}/${id}`);
+  }
+
+
+  getCompanyById(id: string): Observable<Company> {
+    return this.http
+      .get<Company>(`https://www.themuse.com/api/public/companies/${id}`);
   }
 
 }

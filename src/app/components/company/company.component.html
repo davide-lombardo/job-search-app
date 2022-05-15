@@ -1,0 +1,30 @@
+<article *ngIf="company !== undefined" class="h-screen company-preview-container flex flex-column items-center container">
+    
+    <div class="w-full bg-gray-100">
+        <img src="{{company?.refs?.logo_image}}" alt="{{company?.name}}'s Logo" />
+    </div>
+    <div class="p-3 w-full bg-gray-100">
+        <h2 class="font-bold">{{company?.name}}</h2>
+        <div class="text-gray-500 mr-2">
+            <p>
+                <span class="mr-2 text-gray-500">industry:</span>
+                {{industriesList().join(', ')}}
+            </p>
+        </div>
+        <div class="text-gray-500 mr-2">
+            <p>
+                <span class="mr-2 text-gray-500">location:</span>
+                {{locationsList()[0]}}
+                <span *ngIf="locationsList().length > 1"> and more</span>
+            </p>
+        </div>
+        <div class="text-gray-500 mr-2">
+            <p>
+                <span class="mr-2 text-gray-500">people:</span>
+                {{companySize()}}
+            </p>
+        </div>
+        <button type="button" class="border rounded-xl bg-purple-600 hover:opacity-75 text-white inline-flex items-center font-regular p-2" [routerLink]="['/job-list']">← Go back</button>
+    </div>
+    
+</article>

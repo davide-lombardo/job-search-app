@@ -1,0 +1,21 @@
+<article class="container mx-auto py-3">
+    <div class="mb-3 bg-gray-50 p-2">   
+        <a [routerLink]="['/companies', job?.company?.id]" class="text-blue-700 block max-w-lg">
+            <i class="mr-1 fa-solid fa-circle-info"></i>{{job?.company?.name}}
+        </a>
+        <h1 class="text-3xl mb-5 mt-3">{{job?.name}}</h1>
+        <div class="locations mb-3">
+            <span *ngFor="let location of job?.locations">{{location.name}}</span>
+        </div>
+        <div class="levels">
+            <span *ngFor="let level of job?.levels">{{level.name.split(' ')[0]}}</span>
+        </div>
+    </div>
+    <div [innerHTML]="job?.contents" class="p-2"></div>
+
+    <button type="button" class="border rounded-xl bg-purple-600 hover:opacity-75 text-white inline-flex items-center font-regular p-2" [routerLink]="['/job-list']">← Go back</button>
+</article>
+
+
+
+

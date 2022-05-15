@@ -1,0 +1,18 @@
+<div class="flex justify-around items-center p-16">
+    <button 
+        class="w-14 min-w-max border border-black rounded-xl p-3 cursor-pointer" id="goToPrevPageBtn" 
+        (click)="PreviousPage()"
+        [disabled]="(page === pageCount)"
+        id="PreviousPage" 
+    >   ← Previous
+    </button>
+        <span>Page {{page}} of {{pageCount}}</span>
+    <button 
+        class="w-24 min-w-max border border-black rounded-xl p-3 cursor-pointer" 
+        (click)="NextPage()"
+        [disabled]="(page === 1)"
+        id="NextPage" 
+    >   Next →
+    </button>
+</div>
+

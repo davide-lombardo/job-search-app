@@ -1,42 +1,76 @@
-<mat-progress-spinner 
-    class="flex items-center mx-auto mt-16 z-10" 
-    [mode]="'indeterminate'"
-    *ngIf="loading$ | async"
->
-</mat-progress-spinner>
+<div class="py-16">
 
-<div class="py-24">
+    <div class="flex justify-center items-center">
+        <h4 class="text-3xl font-normal text-gray-700">Filter by level</h4>
+
+        <select 
+            #select id="level-select" 
+            class="
+                m-3
+                block
+                px-2
+                py-2
+                text-xl
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                rounded
+                cursor-pointer
+                transition
+                ease-in-out" 
+            aria-label=".form-select-sm example" 
+            (change)="changeLevel(1)"
+        >
+            <option selected value="all">All</option>
+            <option value="Entry Level">Entry Level</option>
+            <option value="Mid Level">Mid Level</option>
+            <option value="Senior Level">Senior Level</option>
+            <option value="Internship">Internship</option>
+        </select>
+    </div>
+    
 	<div class="flex flex-col sm:mx-40 bg-white rounded-lg border shadow-md p-4 sm:p-8">
         <div class="flex justify-between items-center mb-4">
-            <h3 class="text-xl font-bold leading-none text-gray-900">Jobs</h3>    
+            <h1 class="text-xl font-bold leading-none text-gray-900">Results</h1>    
         </div>
         <div>
-            <ul class="divide-y divide-gray-200">
-                <li *ngFor="let job of jobs">
-                    <div class="flex items-center space-x-4">
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                {{job.name}}
-                            </p>
-                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                {{job.short_name}}
-                            </p>
-                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                {{job.model_type}}
-                            </p>
-                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                {{job.publication_date}}
-                            </p>
-                        </div>
-                        <button class="border rounded-xl bg-purple-600 hover:opacity-75 text-white inline-flex items-center font-regular p-2">
-                            <span>View</span>
-                        </button>
-                    </div>
-                </li>
-                <app-job-card></app-job-card>
-         
+            <ul *ngIf="jobs.length">
+                <app-job-card *ngFor="let job of jobs" [job]="job"></app-job-card>
             </ul>
         </div>
     </div>
 </div>
+
+<div class="relative">
+    <mat-progress-spinner 
+        class="flex items-center mx-auto mt-16 z-10" 
+        [mode]="'indeterminate'"
+        *ngIf="loading$ | async"
+    >
+    </mat-progress-spinner>
+
+ 
+    <div *ngIf="!jobs.length" class="flex justify-center items-center flex-col mt-40">
+        <p class="text-xl mb-3">Ops! Looks like your job don't exist jet...</p>
+        <p class="text-gray-500">Please, try again with different filters</p>
+    </div>
+</div>
+
+<div class="flex justify-around items-center p-16" aria-label="...">
+    <button 
+        class="w-14 min-w-max border border-black rounded-xl p-3 cursor-pointer" id="goToPrevPageBtn" 
+        (click)="PreviousPage()"
+    >   ← Previous
+    </button>
+        <span>Page {{page}}</span>
+    <button 
+        class="w-24 min-w-max border border-black rounded-xl p-3 cursor-pointer" 
+        (click)="NextPage()"
+    >   Next →
+    </button>
+</div>
+
+
+<!-- <app-pagination *ngIf="jobs.length" [page]="page" [pageCount]="pageCount" (goToPage)="goToPage($event)"></app-pagination> -->
 

@@ -10,22 +10,28 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NetworkInterceptor } from './network.interceptor';
 
 import { AppComponent } from './app.component';
-import { SearchComponent } from './components/searchbar/searchbar.component';
 import { JobListComponent } from './components/job-list/job-list.component';
 import { JobCardComponent } from './components/job-card/job-card.component';
-import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { JobDetailComponent } from './components/job-detail/job-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CompanyComponent } from './components/company/company.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
     JobListComponent,
     JobCardComponent,
-    HomeComponent,
     FooterComponent,
+    PaginationComponent,
+    JobDetailComponent,
+    PageNotFoundComponent,
+    CompanyComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

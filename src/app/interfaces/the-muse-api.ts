@@ -1,14 +1,34 @@
-export interface JobsPagesRoot {
+export interface JobsPaged {
   page: number;
   page_count: number;
   items_per_page: number;
   took: number;
   timed_out: boolean;
   total: number;
-  results: JobListRoot[];
+  results: Job[];
 }
 
-export interface JobListRoot {
+export interface Job {
+  contents: string;
+  name: string;
+  type: string;
+  publication_date: string;
+  short_name: string;
+  model_type: string;
+  id: number;
+  locations: Location[];
+  categories: Category[];
+  levels: Level[];
+  tags: any[];
+  refs: Refs;
+  company: {
+    id: string;
+    short_name: string;
+    name: string;
+  };
+}
+
+export interface Company {
   description: string;
   locations: Location[];
   industries: Industry[];
@@ -18,9 +38,19 @@ export interface JobListRoot {
   publication_date: string;
   model_type: string;
   twitter: any;
-  id: number;
+  id: string;
   size: Size;
   refs: Refs;
+}
+
+
+export interface Industries {
+  name: string;
+}
+
+export interface Level {
+  name: string;
+  short_name: string;
 }
   
 export interface Location {
@@ -28,6 +58,10 @@ export interface Location {
 }
   
 export interface Industry {
+  name: string;
+}
+
+export interface Category {
   name: string;
 }
 
