@@ -1,12 +1,12 @@
-# JobHunter
+# Job Hunting
 
-![Alt text](src/assets/screenshot.PNG "screenshot")
+![Alt text](src/assets/screenshot.png "screenshot")
 
 This project is a job search site, so with this site you can you can search for job offers.
 
 ## Getting Started
 
-To Starting using this Application, go to  on your favourite browser, or if you want to try it locally download the project and run "ng serve -o".
+To Starting using this Application, go to https://job-hunting-e440e.web.app/ on your favourite browser, or if you want to try it locally download the project and run "ng serve -o".
 
 ## Tools Used
 
